@@ -1,0 +1,95 @@
+---
+title: Running the Program
+description: Learn how to compile and run the Actividad-1 program
+---
+
+## Compilation
+
+Before running the program, you need to compile the Java source code.
+
+<Steps>
+  <Step title="Navigate to the source directory">
+    Open your terminal and navigate to the `src` directory:
+    ```bash
+    cd src
+    ```
+  </Step>
+
+  <Step title="Compile the program">
+    Use the Java compiler to compile `Main.java`:
+    ```bash
+    javac Main.java
+    ```
+    
+    This will generate a `Main.class` file in the same directory.
+  </Step>
+
+  <Step title="Run the program">
+    Execute the compiled program:
+    ```bash
+    java Main
+    ```
+  </Step>
+</Steps>
+
+## Quick Start
+
+If you're already in the `src` directory, you can compile and run in one go:
+
+```bash
+javac Main.java && java Main
+```
+
+## Troubleshooting
+
+<AccordionGroup>
+  <Accordion title="'javac' is not recognized as a command">
+    This error means Java is not installed or not in your PATH.
+    
+    **Solution:**
+    - Install the Java Development Kit (JDK) from [Oracle](https://www.oracle.com/java/technologies/downloads/) or use OpenJDK
+    - Add the JDK's `bin` directory to your system PATH
+    - Verify installation: `javac -version`
+  </Accordion>
+
+  <Accordion title="Error: Could not find or load main class Main">
+    This usually happens when you're in the wrong directory or the `.class` file wasn't generated.
+    
+    **Solution:**
+    - Make sure you're in the same directory as `Main.class`
+    - Verify the compilation was successful (no errors from `javac`)
+    - Check that `Main.class` exists in the current directory
+  </Accordion>
+
+  <Accordion title="Error: class Main is public, should be declared in a file named Main.java">
+    The filename doesn't match the public class name.
+    
+    **Solution:**
+    - Ensure your file is named exactly `Main.java` (case-sensitive)
+  </Accordion>
+
+  <Accordion title="InputMismatchException during execution">
+    This occurs when you enter non-integer values when the program expects integers.
+    
+    **Solution:**
+    - Only enter whole numbers (integers) when prompted
+    - Do not enter decimal numbers or text
+    - See [Input Format](/usage/input-format) for proper input guidelines
+  </Accordion>
+</AccordionGroup>
+
+## Running from Different Directories
+
+If you need to run the program from a parent directory:
+
+```bash
+# Compile
+javac src/Main.java
+
+# Run (note the classpath)
+java -cp src Main
+```
+
+<Info>
+The `-cp` (classpath) flag tells Java where to find the compiled `.class` files.
+</Info>

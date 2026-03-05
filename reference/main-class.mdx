@@ -1,0 +1,156 @@
+---
+title: 'Main Class'
+description: 'Complete documentation of the Main class structure, imports, and variable declarations'
+icon: 'file-code'
+---
+
+## Overview
+
+The `Main` class contains the entry point for the Actividad-1 application. It demonstrates array operations, user input handling, and basic statistical calculations in Java.
+
+## Class Declaration
+
+```java Main.java:3
+public class Main {
+    public static void main(String[] args) {
+        // Implementation
+    }
+}
+```
+
+The class follows the standard Java application structure with a single `public static void main(String[] args)` method.
+
+## Imports
+
+```java Main.java:1
+import java.util.Scanner; // Importa scanner para leer datos de entradad del usuario
+```
+
+The program imports the `Scanner` class from `java.util` package to handle user input from the console. The Scanner provides methods like `nextInt()` for reading integer values.
+
+## Variable Declarations
+
+<Accordion title="Array Declarations (Lines 7-9)">
+
+The program declares three integer arrays, each with a fixed size of 7 elements:
+
+```java Main.java:7-9
+int[] array1 = new int[7]; // Se crea el primer arreglo
+int[] array2 = new int[7]; // Se crea el segundo arreglo
+int[] arrayDiferencia = new int[7];
+```
+
+- `array1`: Stores the first set of user inputs
+- `array2`: Stores the second set of user inputs
+- `arrayDiferencia`: Stores the calculated differences between corresponding elements
+
+</Accordion>
+
+<Accordion title="Scanner Initialization (Line 5)">
+
+```java Main.java:5
+Scanner sc = new Scanner(System.in);
+```
+
+Creates a Scanner object connected to standard input (`System.in`) for reading user keyboard input throughout the program.
+
+</Accordion>
+
+<Accordion title="Calculation Variables (Lines 11-12)">
+
+```java Main.java:11-12
+int sumaTotal = 0;
+int totalElementos = array1.length * 2;
+```
+
+- `sumaTotal`: Accumulator variable that stores the sum of all elements from both arrays (initialized to 0)
+- `totalElementos`: Total count of elements across both arrays, calculated as `7 * 2 = 14`
+
+These variables are used later to calculate the average of all input values.
+
+</Accordion>
+
+## Complete Source Code
+
+```java Main.java
+import  java.util.Scanner; // Importa scanner para leer datos de entradad del usuario
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int[] array1 = new int[7]; // Se crea el primer arreglo
+        int[] array2 = new int[7]; // Se crea el segundo arreglo
+        int[] arrayDiferencia = new int[7];
+
+        int sumaTotal = 0;
+        int totalElementos = array1.length * 2;
+
+        System.out.println("Ingrese 7 valores para el primer arreglo");
+        for (int i = 0; i < array1.length; i++) {
+            System.out.print("Valor " + (i + 1) + ": ");
+            array1[i] = sc.nextInt();
+            sumaTotal += array1[i];
+        }
+
+        System.out.println("Ingrese 7 valores para el segundo arreglo");
+        for (int i = 0; i < array1.length; i++) {
+            System.out.print("Valor " + (i + 1) + ": ");
+            array2[i] = sc.nextInt();
+            sumaTotal += array1[i];
+        }
+
+        // Diferencia
+        for (int i = 0; i < array1.length; i++) {
+            arrayDiferencia[i] = array1[i] - array2[i];
+        }
+
+        // Promedio
+        double promedio = (double) sumaTotal / totalElementos;
+
+        System.out.printf("El promedio es: %.2f", promedio);
+
+        System.out.println("\nArreglo de diferencias");
+        for (int i = 0; i < arrayDiferencia.length; i++) {
+            System.out.println("Posición" + i + ":" + arrayDiferencia[i]);
+        }
+        sc.close();
+    }
+}
+```
+
+## Line-by-Line Explanation
+
+<Note>
+This section provides a detailed walkthrough of the Main class implementation.
+</Note>
+
+| Lines | Description |
+|-------|-------------|
+| 1 | Imports the Scanner class for reading console input |
+| 3-4 | Declares the Main class and main method |
+| 5 | Initializes Scanner object for user input |
+| 7-9 | Declares three integer arrays of size 7 |
+| 11 | Initializes sum accumulator to 0 |
+| 12 | Calculates total element count (14) |
+| 14-19 | First input loop: reads 7 values into array1 and accumulates sum |
+| 21-26 | Second input loop: reads 7 values into array2 |
+| 29-31 | Calculates element-wise differences (array1[i] - array2[i]) |
+| 34 | Computes average using explicit double casting |
+| 36 | Prints formatted average with 2 decimal places |
+| 38-41 | Displays the difference array elements |
+| 42 | Closes the Scanner resource |
+
+## Resource Management
+
+```java Main.java:42
+sc.close();
+```
+
+The Scanner is properly closed at the end of the program to release system resources. This is a best practice when working with I/O resources.
+
+## See Also
+
+- [Array Operations](/reference/array-operations) - Detailed documentation of array manipulation logic
+- [Running the Program](/usage/running-the-program) - Step-by-step execution guide
+- [Input Format](/usage/input-format) - Understanding input requirements

@@ -1,0 +1,243 @@
+---
+title: 'Array Operations'
+description: 'Detailed documentation of array input, difference calculations, and output operations'
+icon: 'table'
+---
+
+## Overview
+
+This page documents the core array operations in the Actividad-1 application, including user input collection, difference calculations, average computation, and formatted output.
+
+## Array Input Operations
+
+### First Array Input (Lines 14-19)
+
+The first loop collects 7 integer values from the user and stores them in `array1`:
+
+```java Main.java:14-19
+System.out.println("Ingrese 7 valores para el primer arreglo");
+for (int i = 0; i < array1.length; i++) {
+    System.out.print("Valor " + (i + 1) + ": ");
+    array1[i] = sc.nextInt();
+    sumaTotal += array1[i];
+}
+```
+
+<Accordion title="Operation Details">
+
+**Key Features:**
+- Prompts user with "Ingrese 7 valores para el primer arreglo"
+- Uses zero-based indexing (`i`) but displays one-based numbering (`i + 1`) for user clarity
+- Reads each integer using `sc.nextInt()`
+- **Accumulates sum**: Each input value is immediately added to `sumaTotal` (line 18)
+- Loop iterates based on `array1.length` for maintainability
+
+</Accordion>
+
+### Second Array Input (Lines 21-26)
+
+<Note type="warning">
+This section contains a critical bug that affects the average calculation.
+</Note>
+
+The second loop collects 7 integer values for `array2`:
+
+```java Main.java:21-26
+System.out.println("Ingrese 7 valores para el segundo arreglo");
+for (int i = 0; i < array1.length; i++) {
+    System.out.print("Valor " + (i + 1) + ": ");
+    array2[i] = sc.nextInt();
+    sumaTotal += array1[i];  // BUG: Should be array2[i]
+}
+```
+
+<Accordion title="Critical Bug on Line 25">
+
+**Bug Description:**
+
+```java Main.java:25
+sumaTotal += array1[i];  // Incorrect: adds array1 values again
+```
+
+**Expected Behavior:**
+
+```java
+sumaTotal += array2[i];  // Correct: should add array2 values
+```
+
+**Impact:**
+- The sum accumulates `array1` values **twice** instead of including `array2` values
+- This causes the average calculation to be incorrect
+- The bug results in: `average = (sum(array1) * 2) / 14` instead of `(sum(array1) + sum(array2)) / 14`
+
+**Example:**
+
+If `array1 = [1, 2, 3, 4, 5, 6, 7]` and `array2 = [10, 20, 30, 40, 50, 60, 70]`:
+
+- **Actual sum**: `28 + 28 = 56` (array1 counted twice)
+- **Expected sum**: `28 + 280 = 308`
+- **Actual average**: `56 / 14 = 4.0`
+- **Expected average**: `308 / 14 = 22.0`
+
+</Accordion>
+
+## Difference Calculation (Lines 29-31)
+
+Calculates element-wise differences between the two arrays:
+
+```java Main.java:29-31
+// Diferencia
+for (int i = 0; i < array1.length; i++) {
+    arrayDiferencia[i] = array1[i] - array2[i];
+}
+```
+
+<Accordion title="How It Works">
+
+**Logic:**
+- Iterates through each index from 0 to 6
+- Subtracts corresponding elements: `arrayDiferencia[i] = array1[i] - array2[i]`
+- Stores results in the `arrayDiferencia` array
+
+**Example:**
+
+| Index | array1[i] | array2[i] | arrayDiferencia[i] |
+|-------|-----------|-----------|--------------------|
+| 0 | 10 | 5 | 5 |
+| 1 | 15 | 8 | 7 |
+| 2 | 20 | 12 | 8 |
+| 3 | 7 | 9 | -2 |
+| 4 | 30 | 25 | 5 |
+| 5 | 18 | 20 | -2 |
+| 6 | 22 | 15 | 7 |
+
+</Accordion>
+
+## Average Calculation (Line 34)
+
+Computes the average of all input values using explicit type casting:
+
+```java Main.java:34
+double promedio = (double) sumaTotal / totalElementos;
+```
+
+<Accordion title="Type Casting Explanation">
+
+**Why Casting is Necessary:**
+
+Java performs integer division by default when both operands are integers. Without casting:
+
+```java
+// Without cast: Integer division (incorrect)
+int result = 57 / 14;  // Result: 4 (truncated)
+
+// With cast: Floating-point division (correct)
+double result = (double) 57 / 14;  // Result: 4.071428...
+```
+
+**How It Works:**
+- `(double) sumaTotal` converts the integer sum to a double
+- Division then operates in floating-point arithmetic
+- Result is stored in `promedio` variable with full precision
+
+**Note:** Due to the bug on line 25, this average is calculated incorrectly.
+
+</Accordion>
+
+## Output Formatting
+
+### Average Output (Line 36)
+
+Displays the average with exactly 2 decimal places:
+
+```java Main.java:36
+System.out.printf("El promedio es: %.2f", promedio);
+```
+
+<Accordion title="printf Format Specification">
+
+**Format String Breakdown:**
+- `%`: Marks the start of a format specifier
+- `.2`: Specifies 2 decimal places of precision
+- `f`: Indicates floating-point number format
+
+**Examples:**
+
+| Value | Output |
+|-------|--------|
+| 4.071428 | "El promedio es: 4.07" |
+| 22.5 | "El promedio es: 22.50" |
+| 10.0 | "El promedio es: 10.00" |
+| 7.999 | "El promedio es: 8.00" (rounded) |
+
+</Accordion>
+
+### Difference Array Output (Lines 38-41)
+
+Displays all elements of the difference array:
+
+```java Main.java:38-41
+System.out.println("\nArreglo de diferencias");
+for (int i = 0; i < arrayDiferencia.length; i++) {
+    System.out.println("Posición" + i + ":" + arrayDiferencia[i]);
+}
+```
+
+<Accordion title="Output Format Details">
+
+**Features:**
+- Line 38: Prints header with newline escape sequence (`\n`)
+- Lines 39-41: Iterates through all 7 elements
+- Displays position (index) and corresponding difference value
+
+**Sample Output:**
+
+```
+El promedio es: 15.50
+Arreglo de diferencias
+Posición0:5
+Posición1:7
+Posición2:8
+Posición3:-2
+Posición4:5
+Posición5:-2
+Posición6:7
+```
+
+**Note:** The output format lacks spacing (e.g., "Posición0:5" instead of "Posición 0: 5").
+
+</Accordion>
+
+## Operation Summary
+
+<CardGroup cols={2}>
+  <Card title="Input Operations" icon="keyboard">
+    Two sequential loops collect 7 integers each from user input
+  </Card>
+  <Card title="Difference Calculation" icon="calculator">
+    Element-wise subtraction: array1[i] - array2[i]
+  </Card>
+  <Card title="Average Calculation" icon="chart-line">
+    Sum divided by total elements (14) with double precision
+  </Card>
+  <Card title="Formatted Output" icon="print">
+    Printf for average (2 decimals), loop for difference array
+  </Card>
+</CardGroup>
+
+## Performance Characteristics
+
+| Operation | Time Complexity | Space Complexity |
+|-----------|----------------|------------------|
+| First array input | O(n) where n=7 | O(1) auxiliary |
+| Second array input | O(n) where n=7 | O(1) auxiliary |
+| Difference calculation | O(n) where n=7 | O(1) auxiliary |
+| Average calculation | O(1) | O(1) |
+| Output display | O(n) where n=7 | O(1) auxiliary |
+| **Total** | **O(n)** | **O(n)** for arrays |
+
+## See Also
+
+- [Main Class](/reference/main-class) - Complete class structure and variable declarations
+- [Input Format](/usage/input-format) - Understanding input requirements (includes bug documentation)
+- [Output Format](/usage/output-format) - Understanding program output

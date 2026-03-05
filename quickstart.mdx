@@ -1,80 +1,219 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: Quickstart
+description: Get up and running with Actividad-1 in minutes
 ---
 
-## Get started in three steps
+## Get Started with Actividad-1
 
-Get your documentation site running locally and make your first customization.
+This guide will walk you through compiling and running the Actividad-1 program. You'll learn how to set up the environment, compile the Java source code, and execute the program with sample data.
 
-### Step 1: Set up your local environment
+## Prerequisites
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
-    
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
-    
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
+Before you begin, ensure you have:
 
-### Step 2: Deploy your changes
-
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
-    
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
-
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
-
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 3: Go live
-
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
-
-## Next steps
-
-Now that you have your docs running, explore these key features:
-
-<CardGroup cols={2}>
-
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
-
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
-
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
-
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
-
-</CardGroup>
+- **Java Development Kit (JDK)** installed (version 8 or higher)
+- Access to a terminal or command prompt
+- The `Main.java` source file
 
 <Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
+  You can verify your Java installation by running `java -version` in your terminal.
 </Note>
+
+## Installation & Execution
+
+<Steps>
+  <Step title="Navigate to the source directory">
+    Open your terminal and navigate to the directory containing `Main.java`:
+    
+    ```bash
+    cd ~/workspace/source/src
+    ```
+  </Step>
+  
+  <Step title="Compile the Java program">
+    Compile the source code using the Java compiler:
+    
+    ```bash
+    javac Main.java
+    ```
+    
+    This will generate a `Main.class` file in the same directory. If you see no output, the compilation was successful.
+    
+    <Warning>
+      If you encounter errors, verify that your JDK is properly installed and that `javac` is in your system PATH.
+    </Warning>
+  </Step>
+  
+  <Step title="Run the program">
+    Execute the compiled program:
+    
+    ```bash
+    java Main
+    ```
+    
+    The program will start and prompt you for input.
+  </Step>
+  
+  <Step title="Enter values for the first array">
+    You'll see a prompt to enter 7 values for the first array. Enter each value and press Enter:
+    
+    ```
+    Ingrese 7 valores para el primer arreglo
+    Valor 1: 10
+    Valor 2: 20
+    Valor 3: 30
+    Valor 4: 40
+    Valor 5: 50
+    Valor 6: 60
+    Valor 7: 70
+    ```
+  </Step>
+  
+  <Step title="Enter values for the second array">
+    Next, enter 7 values for the second array:
+    
+    ```
+    Ingrese 7 valores para el segundo arreglo
+    Valor 1: 5
+    Valor 2: 15
+    Valor 3: 25
+    Valor 4: 35
+    Valor 5: 45
+    Valor 6: 55
+    Valor 7: 65
+    ```
+  </Step>
+  
+  <Step title="View the results">
+    The program will calculate and display:
+    
+    1. The average of all input values
+    2. The element-wise differences between the two arrays
+    
+    ```
+    El promedio es: 32.14
+    Arreglo de diferencias
+    Posición0:5
+    Posición1:5
+    Posición2:5
+    Posición3:5
+    Posición4:5
+    Posición5:5
+    Posición6:5
+    ```
+  </Step>
+</Steps>
+
+## Complete Example Session
+
+Here's what a complete terminal session looks like:
+
+```bash
+$ javac Main.java
+$ java Main
+Ingrese 7 valores para el primer arreglo
+Valor 1: 10
+Valor 2: 20
+Valor 3: 30
+Valor 4: 40
+Valor 5: 50
+Valor 6: 60
+Valor 7: 70
+Ingrese 7 valores para el segundo arreglo
+Valor 1: 5
+Valor 2: 15
+Valor 3: 25
+Valor 4: 35
+Valor 5: 45
+Valor 6: 55
+Valor 7: 65
+El promedio es: 32.14
+Arreglo de diferencias
+Posición0:5
+Posición1:5
+Posición2:5
+Posición3:5
+Posición4:5
+Posición5:5
+Posición6:5
+```
+
+## Understanding the Code
+
+The program consists of several key sections:
+
+### Array Declaration
+
+```java
+int[] array1 = new int[7]; // Se crea el primer arreglo
+int[] array2 = new int[7]; // Se crea el segundo arreglo
+int[] arrayDiferencia = new int[7];
+```
+
+Three arrays are declared: two for user input and one to store the differences.
+
+### Reading Input
+
+```java
+Scanner sc = new Scanner(System.in);
+
+System.out.println("Ingrese 7 valores para el primer arreglo");
+for (int i = 0; i < array1.length; i++) {
+    System.out.print("Valor " + (i + 1) + ": ");
+    array1[i] = sc.nextInt();
+    sumaTotal += array1[i];
+}
+```
+
+The `Scanner` class reads integer values from the console, and a loop iterates through each array position.
+
+### Calculating Differences
+
+```java
+for (int i = 0; i < array1.length; i++) {
+    arrayDiferencia[i] = array1[i] - array2[i];
+}
+```
+
+Each element of the difference array stores the subtraction of corresponding elements.
+
+### Computing the Average
+
+```java
+double promedio = (double) sumaTotal / totalElementos;
+System.out.printf("El promedio es: %.2f", promedio);
+```
+
+The average is calculated by dividing the sum by the total number of elements (14), with type casting to `double` for decimal precision.
+
+## Troubleshooting
+
+<Card title="Input Mismatch Exception" icon="triangle-exclamation">
+  If you enter non-integer values, the program will throw an `InputMismatchException`. Make sure to enter only whole numbers.
+</Card>
+
+<Card title="Command Not Found" icon="circle-xmark">
+  If `javac` or `java` commands are not recognized, verify that the JDK is installed and added to your system PATH.
+</Card>
+
+## Next Steps
+
+Now that you've successfully run the program:
+
+<CardGroup cols={2}>
+  <Card title="Main Class" icon="code" href="/reference/main-class">
+    Explore detailed explanations of the Main class
+  </Card>
+  
+  <Card title="Array Operations" icon="calculator" href="/reference/array-operations">
+    Learn about array operations and calculations
+  </Card>
+  
+  <Card title="Input Format" icon="keyboard" href="/usage/input-format">
+    Understanding input requirements
+  </Card>
+  
+  <Card title="Output Format" icon="display" href="/usage/output-format">
+    Understanding program output
+  </Card>
+</CardGroup>
