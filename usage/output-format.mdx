@@ -80,7 +80,7 @@ Here's a full example showing both output components:
 ### Program Output
 
 ```text
-El promedio es: 25.00
+El promedio es: 40.00
 Arreglo de diferencias
 Posición0:5
 Posición1:10
@@ -96,13 +96,16 @@ Posición6:35
 <Steps>
   <Step title="Average Calculation">
     ```
-    Sum = (10+20+30+40+50+60+70) + (5+10+15+20+25+30+35)
-    Sum = 280 + 140 = 420
-    Average = 420 / 14 = 30.00
+    Expected Sum = (10+20+30+40+50+60+70) + (5+10+15+20+25+30+35)
+    Expected Sum = 280 + 140 = 420
+    Expected Average = 420 / 14 = 30.00
+    
+    Actual Sum (with bug) = 280 + 280 = 560
+    Actual Average = 560 / 14 = 40.00
     ```
     
     <Warning>
-    Due to a bug in `Main.java:25`, the actual calculation adds `array1[i]` twice instead of adding `array2[i]`. This means the displayed average may be incorrect.
+    Due to a bug in `Main.java:25`, the actual calculation adds `array1[i]` twice instead of adding `array2[i]`. The program displays 40.00 instead of the correct 30.00.
     </Warning>
   </Step>
 
@@ -131,7 +134,7 @@ The difference array can contain negative values when `array2[i] > array1[i]`:
 
 **Output:**
 ```text
-El promedio es: 25.00
+El promedio es: 20.00
 Arreglo de diferencias
 Posición0:-5
 Posición1:-10
@@ -141,6 +144,10 @@ Posición4:-25
 Posición5:-30
 Posición6:-35
 ```
+
+<Note>
+Due to the bug in line 25, the average shown is 20.00 (array1 sum counted twice: 140+140=280, 280/14=20.00). The correct average should be 30.00 (140+280=420, 420/14=30.00).
+</Note>
 
 ## Reading the Output
 
