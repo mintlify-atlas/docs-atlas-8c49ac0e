@@ -1,0 +1,44 @@
+{
+  "projectType": "general",
+  "projectName": "Actividad-1",
+  "projectDescription": "A Java console application that performs array operations including difference calculation and average computation.",
+  "theme": "mint",
+  "primaryColor": "#007396",
+  "lightColor": "#5382a1",
+  "darkColor": "#00546b",
+  "navigation": {
+    "groups": [
+      {
+        "group": "Overview",
+        "pages": [
+          "introduction",
+          "quickstart"
+        ]
+      },
+      {
+        "group": "Usage",
+        "pages": [
+          "usage/running-the-program",
+          "usage/input-format",
+          "usage/output-format"
+        ]
+      },
+      {
+        "group": "Code Reference",
+        "pages": [
+          "reference/main-class",
+          "reference/array-operations"
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "Interactive console input for two integer arrays",
+    "Calculates element-wise difference between arrays",
+    "Computes average of all array elements",
+    "Formatted output display"
+  ],
+  "publicApiSurface": [
+    "Main.main(String[] args) - Entry point for the application"
+  ]
+}
